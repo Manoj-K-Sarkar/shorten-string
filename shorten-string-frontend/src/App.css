@@ -1,0 +1,142 @@
+/* --------------------App-------------------- */
+.App {
+  min-height: 100vh;
+  width: 100%;
+
+  background: #2c5364;
+  color: #fff;
+  
+  display: flex;
+  justify-content: center;
+}
+
+/*--------------------Main--------------------*/
+main {
+  /* height: 100%; */
+  width: 100%;
+  max-width: 1200px;
+  
+  display: flex;
+  justify-content: space-around;
+}
+
+/*--------------------Sections--------------------*/
+section {
+  height: fit-content;
+  max-width: 600px;
+
+  padding: 2rem;
+  margin-top: 4rem;
+  border-radius: 0.4rem;
+  
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.Encode {
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+}
+
+.Decode {
+  background: linear-gradient(to left, #2c5364, #203a43, #0f2027);
+}
+
+/*--------------------Title--------------------*/
+h1 {
+  font-size: 2.4rem;
+}
+
+
+/*--------------------Input--------------------*/
+.input-container{
+  margin: 3rem 0;
+}
+
+.type-error{
+  color: rgb(252, 93, 93);
+}
+
+input {
+  display: block;
+  margin: 0;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.2rem;
+  
+  color: #333;
+  background-color: rgb(255, 255, 255);
+  
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+input:placeholder-shown + label {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/*--------------------Button--------------------*/
+button {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 0.3rem 0.3rem 0;
+  padding: 0.35rem 1.2rem;
+  border: 0.1rem solid #ffffff;
+  border-radius: 0.2rem;
+  
+  color: #ffffff;
+  background-color: #0f2027;
+  
+  text-decoration: none;
+  font-weight: 300;
+  font-size: medium;
+  text-align: center;
+  
+  transition: all 0.2s;
+}
+
+button:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+/*--------------------Output--------------------*/
+.output {
+  width: 320px;
+  max-height: 100%;
+  
+  overflow: hidden;
+  word-wrap: break-word;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: .01rem;
+}
+
+
+/*--------------------Resposive--------------------*/
+
+@media only screen and (max-width: 720px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /* min-height: 40%; */
+    padding: 1rem;
+  }
+
+  .Encode {
+    background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
+  }
+
+  .Decode {
+    background: linear-gradient(to top, #2c5364, #203a43, #0f2027);
+  }
+}
