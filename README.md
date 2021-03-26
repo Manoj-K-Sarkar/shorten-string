@@ -1,22 +1,27 @@
 # Algorithm
 
+* Create **an array(ARR) of length of 64 and store a to z, A to Z, 0 to 9 and three special characters**
+
 ## Encode
 
-* To Encode the String, it traverse the string and counts the **consecutive duplicate character frequency**.
-* If the is greater than one then it puts the frequency in **front of that character** in the output string. 
-* Else for the **single character**, it will append the character as it is.
-
-eg: For, "helloworld" instead of encoded to "1h1e2l1o1w1r1l1d" 
-	it will encode "hl2loworld"
-
+input: **random**
+* Represent every character as 5 bits taking 'a' as 1 \
+  **(r -> 10010 | a -> 00001 | n -> 01110 | d -> 00100 | o -> 01111 | m -> 01101)**
+* Change it to 6 bits by taking the next characters begining represent bits \
+  **(10010 0 | 0001 01 | 110 011 | 10 0010 | 0 01111 | 01101 )**
+* Create the outputString from the array \
+  **(ARR[10010 0] -> ARR[36] -> K | ARR[0001 01] -> ARR[5] -> f | ...)** \
+output: **KfXhT**
 
 ## Decode
 
-* To Decode the string, it transverse the encoded string.
-* if the current character of the string is numeric then until getting the lower case alphabet it will loop to generate the real number and put the lower case alphabet that times in the output string. 
-* else it will append the character only once in the output string.
-
-eg: For, "gh12j2t" output will be "ghjjjjjjjjjjjjtt"
+input: **KfXhT**
+* Represent every character as 6 bits which will be the index of the arr(ARR) \
+  **( K -> ARR[36] -> ARR[100100] -> 100100| f -> ARR[5] -> ARR[000101] -> 000101| ...)**
+* Change it to 5 bits series taking prev end bits & beging bits \
+  **(10010 | 0 0001 | 01 110 | 001 00 | 0111 1 | 01101 )**
+* Create the outputString by adding 96 to the number and change it to character or by ARR[value] \
+output: **random**
 
 
 # Components of the Code
