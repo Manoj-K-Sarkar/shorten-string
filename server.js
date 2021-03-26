@@ -40,19 +40,14 @@ app.post("/encode", (req, res) => {
       if (index === -1) index = 5;
       if (count % 6 === 0) {
         outputString += ASCII[value];
-        // console.log(ASCII[value]);
         value = 0;
-        // console.log(bytes);
         bytes = "";
       }
     }
   }
   if (value !== 0) {
     outputString += ASCII[value];
-    // console.log(ASCII[value]);
-    // console.log(bytes)
   }
-  // console.log(outputString);
 
   return res.json({ encodedString: outputString });
 });
@@ -93,16 +88,13 @@ app.post("/decode", (req, res) => {
       if (count % 5 === 0) {
         outputString += String.fromCharCode(value + 96);
         value = 0;
-        // console.log(bytes);
         bytes = "";
       }
     }
   }
   if (value) {
     outputString += String.fromCharCode(value + 96);
-    // console.log(bytes)
   }
-  // console.log(outputString);
   return res.json({ decodedString: outputString });
 });
 

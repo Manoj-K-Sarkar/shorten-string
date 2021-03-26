@@ -21,15 +21,15 @@ function Decode() {
 
   const onChangeStringHandler = (inputString) => {
     let isValidString = true;
-    for (let i = 0; i < inputString.length; i++) {
-      if (
-        (inputString[i] < "a" || inputString[i] > "z") &&
-        (inputString[i] < "0" || inputString[i] > "9")
-      ) {
-        isValidString = false;
-      }
-    }
-    setIsError(!isValidString);
+    // for (let i = 0; i < inputString.length; i++) {
+    //   if (
+    //     (inputString[i] < "a" || inputString[i] > "z") &&
+    //     (inputString[i] < "0" || inputString[i] > "9")
+    //   ) {
+    //     isValidString = false;
+    //   }
+    // }
+    // setIsError(!isValidString);
     isValidString && setinputString(inputString);
   };
 
