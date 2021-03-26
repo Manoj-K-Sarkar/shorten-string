@@ -47,23 +47,23 @@ sends the required responce(Encoded/Decoded) to the frontend.
 
 ## example 1
 
-Original string: helloworld 
-Encoded string: he2lworld
-**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/helloworld.jpg 
+Original string: helloworld \
+Encoded string: he2lworld \
+**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/helloworld.jpg**
 
 ## example 2
 
-Original string: "" 
-Encoded string: ""
-**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/emptyString.png  
+Original string: "" \
+Encoded string: "" \
+**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/emptyString.png  **
 
 ## example 3
 
-Original string: aaaaaaaaaaaaaaaabbddd 
-Encoded string: 16a2b3d
-**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/16a2bc3d.jpg 
+Original string: aaaaaaaaaaaaaaaabbddd \
+Encoded string: 16a2b3d \
+**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/16a2bc3d.jpg **
 
 ## example 4
 
-Using character other than small cases
-**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/type-error.jpg
+Using character other than small cases \
+**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/type-error.jpg**
