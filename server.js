@@ -10,50 +10,110 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post("/encode", (req, res) => {
+  const ASCII = [];
+  for (let i = 97; i <= 122; i++) ASCII.push(String.fromCharCode(i));
+  for (let i = 65; i <= 90; i++) ASCII.push(String.fromCharCode(i));
+  for (let i = 48; i <= 57; i++) ASCII.push(String.fromCharCode(i));
+  ASCII.push("|");
+  ASCII.push("(");
+  ASCII.push(")");
+
   const body = req.body;
   const inputString = body.encode;
-  const n = inputString.length;
-  let currOutputString = "";
-  for (let i = 0; i < n; i++) {
-    // Count occurrences of current character
-    let count = 1;
-    while (i < n - 1 && inputString[i] === inputString[i + 1]) {
-      count++;
-      i++;
-    }
 
-    // Store character and its count
-    if (count === 1) count = "";
-    currOutputString += count + inputString[i];
+  let outputString = "";
+  let index = 5;
+  let value = 0;
+  let count = 0;
+  let bytes = "";
+  for (let i = 0; i < inputString.length; i++) {
+    let charValue = inputString.charCodeAt(i);
+    charValue -= 96;
+
+    for (let j = 4; j >= 0; j--) {
+      if (charValue & (1 << j)) {
+        value += Math.pow(2, index);
+        bytes += "1";
+      } else bytes += "0";
+      count++;
+      index--;
+      if (index === -1) index = 5;
+      if (count % 6 === 0) {
+        outputString += ASCII[value];
+        // console.log(ASCII[value]);
+        value = 0;
+        // console.log(bytes);
+        bytes = "";
+      }
+    }
   }
-  return res.json({ encodedString: currOutputString });
+  if (value !== 0) {
+    outputString += ASCII[value];
+    // console.log(ASCII[value]);
+    // console.log(bytes)
+  }
+  // console.log(outputString);
+
+  return res.json({ encodedString: outputString });
 });
 
 app.post("/decode", (req, res) => {
+  const ASCII = [];
+  for (let i = 97; i <= 122; i++) ASCII.push(String.fromCharCode(i));
+  for (let i = 65; i <= 90; i++) ASCII.push(String.fromCharCode(i));
+  for (let i = 48; i <= 57; i++) ASCII.push(String.fromCharCode(i));
+  ASCII.push("|");
+  ASCII.push("(");
+  ASCII.push(")");
+
   const body = req.body;
   const inputString = body.decode;
 
-  let currOutputString = "";
+  let outputString = "";
+  let index = 4;
+  let value = 0;
+  let count = 0;
+  let bytes = "";
   for (let i = 0; i < inputString.length; i++) {
-    let count = 0;
-    const character = inputString[i];
-    while (
-      i + 1 < inputString.length &&
-      inputString[i] >= 0 &&
-      inputString[i] <= 9
-    ) {
-      count = count * 10 + (inputString[i++] - 0);
+    let charValue;
+    for (let j = 0; j < ASCII.length; j++) {
+      if (ASCII[j] === inputString[i]) charValue = j;
     }
-    if (!count) currOutputString += character;
-    while (count--) currOutputString += inputString[i];
+
+    for (let j = 5; j >= 0; j--) {
+      if (charValue & (1 << j)) {
+        value += Math.pow(2, index);
+        bytes += "1";
+      } else {
+        bytes += "0";
+      }
+      count++;
+      index--;
+      if (index === -1) index = 4;
+      if (count % 5 === 0) {
+        outputString += String.fromCharCode(value + 96);
+        value = 0;
+        // console.log(bytes);
+        bytes = "";
+      }
+    }
   }
-  return res.json({ decodedString: currOutputString });
+  if (value) {
+    outputString += String.fromCharCode(value + 96);
+    // console.log(bytes)
+  }
+  // console.log(outputString);
+  return res.json({ decodedString: outputString });
 });
 
-app.use(express.static(path.join(__dirname, "shorten-string-frontend", "build")));
+app.use(
+  express.static(path.join(__dirname, "shorten-string-frontend", "build"))
+);
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "shorten-string-frontend", "build", "index.html"));
+  res.sendFile(
+    path.join(__dirname, "shorten-string-frontend", "build", "index.html")
+  );
 });
 
 app.listen(PORT, () => {
