@@ -17,7 +17,7 @@ output: **KfXhT**
 
 input: **KfXhT**
 * Represent every character as 6 bits which will be the index of the arr(ARR) \
-  **( K -> ARR[36] -> ARR[100100] -> 100100| f -> ARR[5] -> ARR[000101] -> 000101| ...)**
+  **( K -> ARR[36] -> ARR[100100] -> 100100 | f -> ARR[5] -> ARR[000101] -> 000101 | ...)**
 * Change it to 5 bits series taking prev end bits & beging bits \
   **(10010 | 0 0001 | 01 110 | 001 00 | 0111 1 | 01101 )**
 * Create the outputString by adding 96 to the number and change it to character or by ARR[value] \
@@ -53,7 +53,7 @@ sends the required responce(Encoded/Decoded) to the frontend.
 ## example 1
 
 Original string: helloworld \
-Encoded string: he2lworld \
+Encoded string:  qvJh3FjH \
 **link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/helloworld.jpg**
 
 ## example 2
@@ -65,8 +65,8 @@ Encoded string: "" \
 ## example 3
 
 Original string: aaaaaaaaaaaaaaaabbddd \
-Encoded string: 16a2b3d \
-**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/16a2bc3d.jpg **
+Encoded string:  ceiqHceiqHceirciqG \
+**link: https://github.com/Manoj-K-Sarkar/shorten-string/blob/main/screenshots/ceiqHceiqHceirciqG.jpg **
 
 ## example 4
 
