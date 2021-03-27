@@ -76,14 +76,16 @@ app.post("/decode", (req, res) => {
       index--;
       if (index === -1) index = 4;
       if (count % 5 === 0) {
-        outputString += String.fromCharCode(value + 96);
+        if (value + 96 >= 97 && value + 96 <= 122)
+          outputString += String.fromCharCode(value + 96);
         value = 0;
         bytes = "";
       }
     }
   }
   if (value) {
-    outputString += String.fromCharCode(value + 96);
+    if (value + 96 >= 97 && value + 96 <= 122)
+      outputString += String.fromCharCode(value + 96);
   }
   return res.json({ decodedString: outputString });
 });
