@@ -9,11 +9,14 @@
     "express": "^4.17.1",
     "path": "^0.12.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd shorten-string-frontend && npm install && npm run build"
+    "heroku-postbuild": "cd shorten-string-frontend && npm install && npm run build",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC"
